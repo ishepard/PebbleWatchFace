@@ -1,32 +1,21 @@
-var xhrRequest = function (url, type, callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    callback(this.responseText);
-  };
-  xhr.open(type, url);
-  xhr.send();
-};
-
 function locationSuccess(pos) {
   var req = new XMLHttpRequest();
-  var reqAPI = new XMLHttpRequest();
+  var request_city = new XMLHttpRequest();
   var response;
-  var responseAPI;
+  var response_city;
   var city;
   var country;
   console.log("lat:" + pos.coords.latitude + " long:" + pos.coords.longitude);
-  // Construct URL
+
   var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + pos.coords.latitude + "&lon=" + pos.coords.longitude;
-  // var geoAPI = "http://where.yahooapis.com/geocode?location="+pos.coords.latitude+","+pos.coords.longitude+"&flags=J&gflags=R&appid=4KEJ6Y4k";
-  console.log("url: " + url);
-  reqAPI.open('GET', url, false);
-  reqAPI.send();
-  if (reqAPI.readyState == 4) {
-      if(reqAPI.status == 200) {
-        console.log("REQAPI.RESPONSETEXT: " + reqAPI.responseText);
-        responseAPI = JSON.parse(reqAPI.responseText);
-        city = responseAPI.name;
-        country = responseAPI.sys.country;
+  request_city.open('GET', url, false);
+  request_city.send();
+  if (request_city.readyState == 4) {
+      if(request_city.status == 200) {
+        // console.log("request_city.RESPONSETEXT: " + request_city.responseText);
+        response_city = JSON.parse(request_city.responseText);
+        city = response_city.name;
+        country = response_city.sys.country;
 
       } else {
         console.log("Error");
@@ -35,9 +24,9 @@ function locationSuccess(pos) {
   console.log("city: " + city);
   console.log("country: " + country);
   
-  // var yahoo_weather = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.placefinder%20where%20text%3D%22%20" + pos.coords.latitude + "%2C%20" + pos.coords.longitude + "%22%20and%20gflags%3D%22R%22)%20and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-  // var yahoo_weather = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+ city +"%2C%20"+ country + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-  var yahoo_weather = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+ city +"%2C%20"+ country + "%22)%20and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+
+  var yahoo_weather_query = encodeURIComponent("select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"" + city + "," + country + "\")");
+  var yahoo_weather = "https://query.yahooapis.com/v1/public/yql?q=" + yahoo_weather_query + "%20and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
   console.log("yahoo_weather: " + yahoo_weather);
   req.open('GET', yahoo_weather, true);
   req.onload = function(e) {
@@ -47,11 +36,11 @@ function locationSuccess(pos) {
         response = JSON.parse(req.responseText);
         var temp = response.query.results.channel.item.condition.temp;
         var cond = response.query.results.channel.item.condition.code;
-        // console.log("response= " + response["query"]["results"]["channel"]["item"]["condition"]["temp"]);
+
         console.log("Temperature= " + temp);
         console.log("Conditions code= " + cond);
-        var temperature = Math.round(temp);
-        var conditions = Math.round(cond);
+        var temperature = parseInt(temp);
+        var conditions = parseInt(cond);
         var dictionary = {
         "KEY_TEMPERATURE": temperature,
         "KEY_CONDITIONS": conditions

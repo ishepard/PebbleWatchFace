@@ -171,11 +171,14 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   } else if (condition_code == 20){
       s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_FOG);
       bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
-  } else if (condition_code == 5 || condition_code == 6 || condition_code == 10 || condition_code == 35) {
+  } else if ((condition_code >= 8 && condition_code <= 12) || condition_code == 35) {
       s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_RAIN);
       bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
-  } else if (condition_code == 24){
+  } else if (condition_code == 24 || (condition_code >= 0 && condition_code <= 4)){
       s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_WIND);
+      bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+  } else if ( (condition_code >= 5 && condition_code <= 7) || (condition_code >= 13 && condition_code <= 15)){
+      s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_SLEET);
       bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
   }
   
