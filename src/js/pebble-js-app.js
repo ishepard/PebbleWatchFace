@@ -43,7 +43,9 @@ function locationSuccess(pos) {
         var conditions = parseInt(cond);
         var dictionary = {
         "KEY_TEMPERATURE": temperature,
-        "KEY_CONDITIONS": conditions
+        "KEY_CONDITIONS": conditions,
+        "KEY_CITY": city,
+        "KEY_COUNTRY": country
       };
       
       // Send to Pebble

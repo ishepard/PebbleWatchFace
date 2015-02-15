@@ -1,6 +1,8 @@
 {
     "appKeys": {
+        "KEY_CITY": 2,
         "KEY_CONDITIONS": 1,
+        "KEY_COUNTRY": 3,
         "KEY_TEMPERATURE": 0
     },
     "capabilities": [
@@ -12,88 +14,9 @@
     "resources": {
         "media": [
             {
-                "file": "images/wind_inverted.png",
-                "name": "IMAGE_WIND",
-                "type": "png"
-            },
-            {
-                "file": "images/snow_inverted.png",
-                "name": "IMAGE_SNOW",
-                "type": "png"
-            },
-            {
-                "file": "images/sleet_inverted.png",
-                "name": "IMAGE_SLEET",
-                "type": "png"
-            },
-            {
-                "file": "images/rain_inverted.png",
-                "name": "IMAGE_RAIN",
-                "type": "png"
-            },
-            {
-                "file": "images/partly-cloudy-night_inverted.png",
-                "name": "IMAGE_PARTLY_CLOUDY_NIGHT",
-                "type": "png"
-            },
-            {
-                "file": "images/partly-cloudy-day_inverted.png",
-                "name": "IMAGE_PARTLY_CLOUDY_DAY",
-                "type": "png"
-            },
-            {
-                "file": "images/fog_inverted.png",
-                "name": "IMAGE_FOG",
-                "type": "png"
-            },
-            {
-                "file": "images/cloudy_inverted.png",
-                "name": "IMAGE_CLOUDY",
-                "type": "png"
-            },
-            {
-                "file": "images/clear-night_inverted.png",
-                "name": "IMAGE_CLEAR_NIGHT",
-                "type": "png"
-            },
-            {
-                "file": "images/error_inverted.png",
-                "name": "IMAGE_ERROR",
-                "type": "png"
-            },
-            {
-                "file": "images/clear-day_inverted.png",
-                "name": "IMAGE_CLEAR_DAY",
-                "type": "png"
-            },
-            {
-                "file": "fonts/DS-DIGI.TTF",
-                "name": "FONT_CLOCK_PROVA_20",
-                "type": "font"
-            },
-            {
-                "file": "fonts/DS-DIGI.TTF",
-                "name": "FONT_CLOCK_PROVA_65",
-                "type": "font"
-            },
-            {
-                "file": "fonts/DS-DIGI.TTF",
-                "name": "FONT_CLOCK_PROVA_30",
-                "type": "font"
-            },
-            {
-                "file": "fonts/alarm clock-2.ttf",
-                "name": "FONT_CLOCK_25",
-                "type": "font"
-            },
-            {
-                "file": "fonts/alarm clock-2.ttf",
-                "name": "FONT_CLOCK_20",
-                "type": "font"
-            },
-            {
-                "file": "fonts/alarm clock-2.ttf",
-                "name": "FONT_CLOCK_50",
+                "compatibility": "2.7",
+                "file": "fonts/perfect-dos-vga.ttf",
+                "name": "FONT_PERFECT_DOS_48",
                 "type": "font"
             },
             {
@@ -103,10 +26,89 @@
                 "type": "font"
             },
             {
-                "compatibility": "2.7",
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "FONT_PERFECT_DOS_48",
+                "file": "fonts/alarm clock-2.ttf",
+                "name": "FONT_CLOCK_50",
                 "type": "font"
+            },
+            {
+                "file": "fonts/alarm clock-2.ttf",
+                "name": "FONT_CLOCK_20",
+                "type": "font"
+            },
+            {
+                "file": "fonts/alarm clock-2.ttf",
+                "name": "FONT_CLOCK_25",
+                "type": "font"
+            },
+            {
+                "file": "fonts/DS-DIGI.TTF",
+                "name": "FONT_CLOCK_PROVA_30",
+                "type": "font"
+            },
+            {
+                "file": "fonts/DS-DIGI.TTF",
+                "name": "FONT_CLOCK_PROVA_65",
+                "type": "font"
+            },
+            {
+                "file": "fonts/DS-DIGI.TTF",
+                "name": "FONT_CLOCK_PROVA_20",
+                "type": "font"
+            },
+            {
+                "file": "images/clear-day_inverted.png",
+                "name": "IMAGE_CLEAR_DAY",
+                "type": "png"
+            },
+            {
+                "file": "images/error_inverted.png",
+                "name": "IMAGE_ERROR",
+                "type": "png"
+            },
+            {
+                "file": "images/clear-night_inverted.png",
+                "name": "IMAGE_CLEAR_NIGHT",
+                "type": "png"
+            },
+            {
+                "file": "images/cloudy_inverted.png",
+                "name": "IMAGE_CLOUDY",
+                "type": "png"
+            },
+            {
+                "file": "images/fog_inverted.png",
+                "name": "IMAGE_FOG",
+                "type": "png"
+            },
+            {
+                "file": "images/partly-cloudy-day_inverted.png",
+                "name": "IMAGE_PARTLY_CLOUDY_DAY",
+                "type": "png"
+            },
+            {
+                "file": "images/partly-cloudy-night_inverted.png",
+                "name": "IMAGE_PARTLY_CLOUDY_NIGHT",
+                "type": "png"
+            },
+            {
+                "file": "images/rain_inverted.png",
+                "name": "IMAGE_RAIN",
+                "type": "png"
+            },
+            {
+                "file": "images/sleet_inverted.png",
+                "name": "IMAGE_SLEET",
+                "type": "png"
+            },
+            {
+                "file": "images/snow_inverted.png",
+                "name": "IMAGE_SNOW",
+                "type": "png"
+            },
+            {
+                "file": "images/wind_inverted.png",
+                "name": "IMAGE_WIND",
+                "type": "png"
             }
         ]
     },

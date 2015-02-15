@@ -2,6 +2,8 @@
 
 #define KEY_TEMPERATURE 0
 #define KEY_CONDITIONS 1
+#define KEY_CITY 2
+#define KEY_COUNTRY 3
 
 static Window *s_main_window;
 static TextLayer *s_time_layer;
@@ -141,6 +143,10 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
     case KEY_CONDITIONS:
       condition_code = (int)t->value->int32;
       snprintf(conditions_buffer, sizeof(conditions_buffer), "%d", (int)t->value->int32);
+      break;
+    case KEY_CITY:
+      break;
+    case KEY_COUNTRY:
       break;
     default:
       APP_LOG(APP_LOG_LEVEL_ERROR, "Key %d not recognized!", (int)t->key);
