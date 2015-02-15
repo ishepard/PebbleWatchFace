@@ -27,12 +27,12 @@ function locationSuccess(pos) {
 
   var yahoo_weather_query = encodeURIComponent("select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"" + city + "," + country + "\")");
   var yahoo_weather = "https://query.yahooapis.com/v1/public/yql?q=" + yahoo_weather_query + "%20and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-  console.log("yahoo_weather: " + yahoo_weather);
+  // console.log("yahoo_weather: " + yahoo_weather);
   req.open('GET', yahoo_weather, true);
   req.onload = function(e) {
     if (req.readyState == 4) {
       if(req.status == 200) {
-        console.log("REQ.RESPONSETEXT: " + req.responseText);
+        // console.log("REQ.RESPONSETEXT: " + req.responseText);
         response = JSON.parse(req.responseText);
         var temp = response.query.results.channel.item.condition.temp;
         var cond = response.query.results.channel.item.condition.code;
