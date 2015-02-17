@@ -4,28 +4,31 @@ function locationSuccess(pos) {
   var response;
   var response_city;
   var city;
-  var country;
+  var countrycode;
+  var street;
   console.log("lat:" + pos.coords.latitude + " long:" + pos.coords.longitude);
 
-  var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + pos.coords.latitude + "&lon=" + pos.coords.longitude;
-  request_city.open('GET', url, false);
+  var yahoo_get_city = encodeURIComponent("select countrycode, city, street from geo.placefinder where text=\"" + pos.coords.latitude + "," + pos.coords.longitude + "\" and gflags=\"R\"");
+  var yahoo_city = "https://query.yahooapis.com/v1/public/yql?q=" + yahoo_get_city + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+  request_city.open('GET', yahoo_city , false);
   request_city.send();
   if (request_city.readyState == 4) {
       if(request_city.status == 200) {
         // console.log("request_city.RESPONSETEXT: " + request_city.responseText);
         response_city = JSON.parse(request_city.responseText);
-        city = response_city.name;
-        country = response_city.sys.country;
-
+        city = response_city.query.results.Result.city;
+        countrycode = response_city.query.results.Result.countrycode;
+        street = response_city.query.results.Result.street;
+        
       } else {
         console.log("Error");
       }
   }
   console.log("city: " + city);
-  console.log("country: " + country);
-  
+  console.log("countrycode: " + countrycode);
+  console.log("street: " + street);
 
-  var yahoo_weather_query = encodeURIComponent("select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"" + city + "," + country + "\")");
+  var yahoo_weather_query = encodeURIComponent("select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"" + city + "," + countrycode + "\")");
   var yahoo_weather = "https://query.yahooapis.com/v1/public/yql?q=" + yahoo_weather_query + "%20and%20u%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
   // console.log("yahoo_weather: " + yahoo_weather);
   req.open('GET', yahoo_weather, true);
@@ -44,8 +47,7 @@ function locationSuccess(pos) {
         var dictionary = {
         "KEY_TEMPERATURE": temperature,
         "KEY_CONDITIONS": conditions,
-        "KEY_CITY": city,
-        "KEY_COUNTRY": country
+        "KEY_STREET": street
       };
       
       // Send to Pebble

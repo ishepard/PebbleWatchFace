@@ -1,58 +1,41 @@
 {
     "appKeys": {
-        "KEY_CITY": 2,
         "KEY_CONDITIONS": 1,
-        "KEY_COUNTRY": 3,
+        "KEY_STREET": 2,
         "KEY_TEMPERATURE": 0
     },
     "capabilities": [
         "location"
     ],
-    "companyName": "Pebble",
-    "longName": "Tutorial-3-3",
+    "companyName": "Shikataganai",
+    "longName": "Alarm Clock WatchFace",
     "projectType": "native",
     "resources": {
         "media": [
             {
-                "compatibility": "2.7",
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "FONT_PERFECT_DOS_48",
-                "type": "font"
-            },
-            {
-                "compatibility": "2.7",
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "FONT_PERFECT_DOS_20",
-                "type": "font"
-            },
-            {
-                "file": "fonts/alarm clock-2.ttf",
-                "name": "FONT_CLOCK_50",
-                "type": "font"
-            },
-            {
-                "file": "fonts/alarm clock-2.ttf",
-                "name": "FONT_CLOCK_20",
-                "type": "font"
-            },
-            {
-                "file": "fonts/alarm clock-2.ttf",
-                "name": "FONT_CLOCK_25",
+                "file": "fonts/DS-DIGI.TTF",
+                "name": "FONT_CLOCK_30",
                 "type": "font"
             },
             {
                 "file": "fonts/DS-DIGI.TTF",
-                "name": "FONT_CLOCK_PROVA_30",
+                "name": "FONT_CLOCK_65",
                 "type": "font"
             },
             {
-                "file": "fonts/DS-DIGI.TTF",
-                "name": "FONT_CLOCK_PROVA_65",
+                "file": "images/image_icon.png",
+                "menuIcon": true,
+                "name": "IMAGE_ICON",
+                "type": "png"
+            },
+            {
+                "file": "fonts/alarm clock-2-2.ttf",
+                "name": "FONT_CLOCK_ITALIC_20",
                 "type": "font"
             },
             {
-                "file": "fonts/DS-DIGI.TTF",
-                "name": "FONT_CLOCK_PROVA_20",
+                "file": "fonts/PIXEARG_.TTF",
+                "name": "FONT_ARIAL_20",
                 "type": "font"
             },
             {
@@ -112,7 +95,7 @@
             }
         ]
     },
-    "shortName": "Tutorial-3-3",
+    "shortName": "Clock-WatchFace",
     "uuid": "2cd637e9-8d2c-467e-b646-fb8e23aec32e",
     "versionCode": 1,
     "versionLabel": "1.0",
